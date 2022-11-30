@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <h2 class="font-bold text-2xl text-center mt-16 mb-10">
+      My Daily <span class="text-blue-500">Cost</span>
+    </h2>
+
+    <div class="w-full flex justify-center">
+      <div class="bg-blue-500 w-[400px] h-[300px] p-5 rounded">
+        <h2 class="text-center font-bold text-white">Login Form</h2>
+
+        <div class="space-y-4">
+          <h2
+            id="wrong"
+            class="text-center my-3 bg-white text-red-500 rounded"
+          ></h2>
+          <input
+            id="email"
+            class="w-full p-2 rounded mt-10"
+            type="email"
+            placeholder="Enter Email"
+          />
+          <input
+            id="password"
+            class="w-full p-2 rounded mt-10"
+            type="password"
+            placeholder="Enter password"
+          />
+
+          <button id="login-btn" class="bg-white p-3 font-bold rounded">
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- js code here -->
+    <script src="./script.js"></script>
+  </body>
+</html>
