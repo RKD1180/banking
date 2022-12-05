@@ -1,39 +1,47 @@
-const depositeBlance = document.getElementById("deposite-blance");
-const depositeInput = document.getElementById("deposite-input");
 const depositeBtn = document.getElementById("deposite-btn");
-
-// withdraw variable
-const withdrawBlance = document.getElementById("withdraw-blance");
-const withdrawInput = document.getElementById("withdraw-input");
 const withdrawBtn = document.getElementById("withdraw-btn");
 // total balance
 const totalBalance = document.getElementById("total-blance");
 
-depositeBtn.addEventListener("click", function () {
-  // get input value
-  const depositeValue = depositeInput.value;
-  //   convert to number
-  const updateDeposite = parseFloat(depositeValue);
-  const depoValue = parseFloat(depositeBlance.innerText);
-  //   update value
-  depositeBlance.innerText = updateDeposite + depoValue;
-  //   calculate total value
-  totalBalance.innerText = parseFloat(totalBalance.innerText) + updateDeposite;
+function getValue(balance, inputBalance) {
+  const blanceId = document.getElementById(balance);
+  const inputId = document.getElementById(inputBalance);
 
-  depositeInput.value = "";
+  const totalValue = parseFloat(inputId.value) + parseFloat(blanceId.innerText);
+  return totalValue;
+}
+
+function updateTotalBalance(balance) {
+  const totalBalance = document.getElementById("total-blance");
+  const inputId = document.getElementById(balance);
+
+  if (balance === "deposite-input") {
+    totalBalance.innerText =
+      parseFloat(totalBalance.innerText) + parseFloat(inputId.value);
+  } else {
+    totalBalance.innerText =
+      parseFloat(totalBalance.innerText) - parseFloat(inputId.value);
+  }
+  inputId.value = "";
+}
+
+depositeBtn.addEventListener("click", function () {
+  const depositeBlance = document.getElementById("deposite-blance");
+  //   update value
+  depositeBlance.innerText = getValue("deposite-blance", "deposite-input");
+  //   calculate total value
+  updateTotalBalance("deposite-input");
 });
 
 withdrawBtn.addEventListener("click", function () {
-  // get input value
-  const depositeValue = withdrawInput.value;
-  //   convert to number
-  const updateWithdraw = parseFloat(depositeValue);
-  const withdrawValue = parseFloat(withdrawBlance.innerText);
+  const withdrawBlance = document.getElementById("withdraw-blance");
+  const totalBalance = document.getElementById("total-blance");
+  const inputId = document.getElementById("withdraw-input");
   //   update value
-  withdrawBlance.innerText = updateWithdraw + withdrawValue;
-
+  if (parseFloat(totalBalance.innerText) <= 500) {
+    return alert("No");
+  }
+  withdrawBlance.innerText = getValue("withdraw-blance", "withdraw-input");
   //   calculate total value
-  totalBalance.innerText = parseFloat(totalBalance.innerText) - updateWithdraw;
-
-  withdrawInput.value = "";
+  updateTotalBalance("withdraw-input");
 });

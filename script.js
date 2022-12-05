@@ -12,8 +12,8 @@ loginBtn.addEventListener("click", function () {
   if (email.value.match(emailValiDator)) {
     if (loginMail == email.value && loginPass == password.value) {
       console.log("Login", email.value, password.value);
-      head.style.display = "none";
-      // window.location.href = "dailyCost.html";
+      // head.style.display = "none";
+      window.location.href = "dailyCost.html";
     } else {
       wrong.innerText = "Wrong Email/Pass";
       console.log("Wrong Email/Pass", email.value, password.value);
